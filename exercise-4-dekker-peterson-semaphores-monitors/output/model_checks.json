@@ -1,0 +1,116 @@
+{
+  "dekker": {
+    "graph": {
+      "model": "dekker",
+      "states": 53,
+      "transitions": 83,
+      "terminal_states": 2,
+      "cs_states": 10
+    },
+    "safety": {
+      "model": "dekker",
+      "states": 53,
+      "transitions": 83,
+      "mutual_exclusion_violations": 0,
+      "violation_states": []
+    },
+    "deadlock": {
+      "model": "dekker",
+      "deadlock_states": 0,
+      "examples": []
+    },
+    "liveness": {
+      "model": "dekker",
+      "live": true
+    }
+  },
+  "peterson": {
+    "graph": {
+      "model": "peterson",
+      "states": 34,
+      "transitions": 46,
+      "terminal_states": 2,
+      "cs_states": 8
+    },
+    "safety": {
+      "model": "peterson",
+      "states": 34,
+      "transitions": 46,
+      "mutual_exclusion_violations": 0,
+      "violation_states": []
+    },
+    "deadlock": {
+      "model": "peterson",
+      "deadlock_states": 0,
+      "examples": []
+    },
+    "liveness": {
+      "model": "peterson",
+      "live": true
+    }
+  },
+  "turn_only": {
+    "graph": {
+      "model": "turn_only",
+      "states": 12,
+      "transitions": 13,
+      "terminal_states": 2,
+      "cs_states": 3
+    },
+    "safety": {
+      "model": "turn_only",
+      "states": 12,
+      "transitions": 13,
+      "mutual_exclusion_violations": 0,
+      "violation_states": []
+    },
+    "deadlock": {
+      "model": "turn_only",
+      "deadlock_states": 0,
+      "examples": []
+    },
+    "liveness": {
+      "model": "turn_only",
+      "live": true
+    }
+  },
+  "flag_only": {
+    "graph": {
+      "model": "flag_only",
+      "states": 21,
+      "transitions": 26,
+      "terminal_states": 1,
+      "cs_states": 6
+    },
+    "safety": {
+      "model": "flag_only",
+      "states": 21,
+      "transitions": 26,
+      "mutual_exclusion_violations": 0,
+      "violation_states": []
+    },
+    "deadlock": {
+      "model": "flag_only",
+      "deadlock_states": 1,
+      "examples": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            true,
+            true
+          ],
+          0
+        ]
+      ]
+    },
+    "liveness": {
+      "model": "flag_only",
+      "process": 0,
+      "live": false,
+      "states_from_which_cs_unreachable": 1
+    }
+  }
+}

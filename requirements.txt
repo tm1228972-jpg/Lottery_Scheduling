@@ -1,0 +1,13 @@
+# Core tests and bilingual report generation
+pytest>=8.0
+arabic-reshaper>=3.0
+python-bidi>=0.4
+Pillow>=10.0
+reportlab>=4.0
+python-docx>=1.1
+pypdf>=4.0
+
+# Experiment visualization and seminar deck
+matplotlib>=3.8
+python-pptx>=0.6.23
+psutil>=5.9

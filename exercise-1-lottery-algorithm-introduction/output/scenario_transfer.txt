@@ -1,0 +1,20 @@
+scenario: transfer.json
+
+|   P1   | P2 | P1 | P3 | P1 | P2 | P1 | P3 |             P1             | P2 |     P1     | P3 |   P2   | P3 | P2 |   P3   | P2 |       P3       | P2 |     P3     | P2 |   P3   |           P2           |
+0-4:P1  4-6:P2  6-8:P1  8-10:P3  10-12:P1  12-14:P2  14-16:P1  16-18:P3  18-32:P1  32-34:P2  34-40:P1  40-42:P3  42-46:P2  46-48:P3  48-50:P2  50-54:P3  54-56:P2  56-64:P3  64-66:P2  66-72:P3  72-74:P2  74-78:P3  78-90:P2
+
+PID     Arr Burst Tickets   Fin  Wait   TAT  Resp   Tick%   Decis    |Err|
+--------------------------------------------------------------------------
+P1        0    30       6    40    10    40     0   0.333   0.333   0.1667
+P2        0    30       2    90    60    90     4   0.333   0.333   0.1667
+P3        0    30       4    78    48    78     8   0.333   0.333   0.0000
+--------------------------------------------------------------------------
+avg waiting   = 39.33
+avg turnaround= 69.33
+avg response  = 4.00
+avg share err = 0.1111   max = 0.1667
+total time    = 90   busy = 90   idle = 0
+CPU utilization = 100.00%
+throughput    = 0.0333 proc/tick
+context switches (proc->proc) = 22   dispatches = 45   total switches = 22
+preemptions = 42   draws = 45   compensation grants = 0

@@ -1,0 +1,21 @@
+scenario: currencies.json
+
+| P2 | P1 |   P4   | P1 | P3 |     P4     |     P1     | P3 | P1 | P4 | P1 | P2 |   P4   | P3 |   P2   |       P3       | P1 | P3 |       P2       |
+0-2:P2  2-4:P1  4-8:P4  8-10:P1  10-12:P3  12-18:P4  18-24:P1  24-26:P3  26-28:P1  28-30:P4  30-32:P1  32-34:P2  34-38:P4  38-40:P3  40-44:P2  44-52:P3  52-54:P1  54-56:P3  56-64:P2
+
+PID     Arr Burst Tickets   Fin  Wait   TAT  Resp   Tick%   Decis    |Err|
+--------------------------------------------------------------------------
+P1        0    16       1    54    38    54     2   0.250   0.250   0.0833
+P2        0    16       1    64    48    64     0   0.250   0.250   0.0833
+P3        0    16       1    56    40    56    10   0.250   0.250   0.0833
+P4        0    16       3    38    22    38     4   0.250   0.250   0.2500
+--------------------------------------------------------------------------
+avg waiting   = 37.00
+avg turnaround= 53.00
+avg response  = 4.00
+avg share err = 0.1250   max = 0.2500
+total time    = 64   busy = 64   idle = 0
+CPU utilization = 100.00%
+throughput    = 0.0625 proc/tick
+context switches (proc->proc) = 18   dispatches = 32   total switches = 18
+preemptions = 28   draws = 32   compensation grants = 0

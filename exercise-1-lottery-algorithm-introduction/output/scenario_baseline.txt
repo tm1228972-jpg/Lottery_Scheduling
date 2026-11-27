@@ -1,0 +1,22 @@
+scenario: baseline.json
+
+|   P1   | P4 | P1 | P2 |  P3  | P5 | P2 |
+0-4:P1  4-6:P4  6-7:P1  7-9:P2  9-12:P3  12-13:P5  13-15:P2
+
+PID     Arr Burst Tickets   Fin  Wait   TAT  Resp   Tick%   Decis    |Err|
+--------------------------------------------------------------------------
+P1        0     5       5     7     2     7     0   0.333   0.333   0.0000
+P2        1     4       3    15    10    14     6   0.267   0.222   0.0667
+P3        2     3       2    12     7    10     7   0.200   0.222   0.0667
+P4        3     2       4     6     1     3     1   0.133   0.111   0.1333
+P5        4     1       1    13     8     9     8   0.067   0.111   0.0000
+--------------------------------------------------------------------------
+avg waiting   = 5.60
+avg turnaround= 8.60
+avg response  = 4.40
+avg share err = 0.0533   max = 0.1333
+total time    = 15   busy = 15   idle = 0
+CPU utilization = 100.00%
+throughput    = 0.3333 proc/tick
+context switches (proc->proc) = 6   dispatches = 9   total switches = 6
+preemptions = 4   draws = 9   compensation grants = 0

@@ -1,0 +1,93 @@
+{
+  "method": "Concurrent CPython threads; same operation counts and critical-section duration per policy.",
+  "policies": {
+    "reader": {
+      "policy": "reader",
+      "configuration": {
+        "readers": 6,
+        "writers": 2,
+        "reader_operations": 80,
+        "writer_operations_per_thread": 20
+      },
+      "reader_wait": {
+        "samples": 480,
+        "mean_ms": 0.0008590166666285388,
+        "p50_ms": 0.0008110000067063083,
+        "p95_ms": 0.0012220000087381777,
+        "max_ms": 0.01048600000785882
+      },
+      "writer_wait": {
+        "samples": 40,
+        "mean_ms": 1.2764110999984979,
+        "p50_ms": 0.00022100000762748095,
+        "p95_ms": 0.00082099998621743,
+        "max_ms": 29.12011099999745
+      },
+      "final_version": 40,
+      "peak_simultaneous_readers": 6,
+      "read_entries": 480,
+      "write_entries": 40,
+      "errors": [],
+      "note": "Observed host-thread timing is an experiment, not a scheduler-independent guarantee."
+    },
+    "writer": {
+      "policy": "writer",
+      "configuration": {
+        "readers": 6,
+        "writers": 2,
+        "reader_operations": 80,
+        "writer_operations_per_thread": 20
+      },
+      "reader_wait": {
+        "samples": 480,
+        "mean_ms": 0.19826096874986376,
+        "p50_ms": 0.0006210000123019199,
+        "p95_ms": 0.0010119999984681272,
+        "max_ms": 15.923194999999168
+      },
+      "writer_wait": {
+        "samples": 40,
+        "mean_ms": 0.21254274999940037,
+        "p50_ms": 0.00031000000433323294,
+        "p95_ms": 0.0008210000004282847,
+        "max_ms": 8.171318999998789
+      },
+      "final_version": 40,
+      "peak_simultaneous_readers": 6,
+      "read_entries": 480,
+      "write_entries": 40,
+      "errors": [],
+      "note": "Observed host-thread timing is an experiment, not a scheduler-independent guarantee."
+    },
+    "fair": {
+      "policy": "fair",
+      "configuration": {
+        "readers": 6,
+        "writers": 2,
+        "reader_operations": 80,
+        "writer_operations_per_thread": 20
+      },
+      "reader_wait": {
+        "samples": 480,
+        "mean_ms": 0.25481816874997065,
+        "p50_ms": 0.0007209999921542476,
+        "p95_ms": 1.0933390000076315,
+        "max_ms": 1.2281939999922997
+      },
+      "writer_wait": {
+        "samples": 40,
+        "mean_ms": 0.9178548000008391,
+        "p50_ms": 0.922446000004129,
+        "p95_ms": 1.0456379999936871,
+        "max_ms": 1.0649570000111908
+      },
+      "final_version": 40,
+      "peak_simultaneous_readers": 6,
+      "read_entries": 480,
+      "write_entries": 40,
+      "errors": [],
+      "note": "Observed host-thread timing is an experiment, not a scheduler-independent guarantee."
+    }
+  },
+  "conclusion_guard": "Reader priority can starve writers; writer priority can starve readers; the fair queue avoids bypass under the stated finite-critical-section assumption."
+}

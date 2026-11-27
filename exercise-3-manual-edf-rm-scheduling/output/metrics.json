@@ -1,0 +1,396 @@
+{
+  "ex3_1_trivial_two_task": {
+    "name": "ex3_1_trivial_two_task",
+    "title": "Ex3-1 \u2014 two-task sanity walkthrough",
+    "horizon": 35,
+    "hyperperiod": 35,
+    "utilization": 0.5428571428571429,
+    "rm_bound": 0.8284271247461903,
+    "n_tasks": 2,
+    "rta": [
+      {
+        "pid": "T1",
+        "r": 2,
+        "seq": [
+          2
+        ],
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "r": 3,
+        "seq": [
+          1,
+          3
+        ],
+        "deadline": 7
+      }
+    ],
+    "edf_demand_bound_ok": true,
+    "tasks": [
+      {
+        "pid": "T1",
+        "burst": 2,
+        "period": 5,
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "burst": 1,
+        "period": 7,
+        "deadline": 7
+      }
+    ],
+    "rm": {
+      "jobs_released": 12,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 12,
+      "dispatches": 12,
+      "context_switches": 0,
+      "busy": 19,
+      "idle": 16,
+      "avg_response": 0.25,
+      "max_tardiness": 0
+    },
+    "edf": {
+      "jobs_released": 12,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 12,
+      "dispatches": 12,
+      "context_switches": 0,
+      "busy": 19,
+      "idle": 16,
+      "avg_response": 0.25,
+      "max_tardiness": 0
+    }
+  },
+  "ex3_2_bound_beaten": {
+    "name": "ex3_2_bound_beaten",
+    "title": "Ex3-2 \u2014 above the Liu-Layland bound, still RM-schedulable (RTA decides)",
+    "horizon": 40,
+    "hyperperiod": 40,
+    "utilization": 0.825,
+    "rm_bound": 0.7797631496846196,
+    "n_tasks": 3,
+    "rta": [
+      {
+        "pid": "T1",
+        "r": 2,
+        "seq": [
+          2
+        ],
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "r": 3,
+        "seq": [
+          1,
+          3
+        ],
+        "deadline": 8
+      },
+      {
+        "pid": "T3",
+        "r": 8,
+        "seq": [
+          3,
+          6,
+          8
+        ],
+        "deadline": 10
+      }
+    ],
+    "edf_demand_bound_ok": true,
+    "tasks": [
+      {
+        "pid": "T1",
+        "burst": 2,
+        "period": 5,
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "burst": 1,
+        "period": 8,
+        "deadline": 8
+      },
+      {
+        "pid": "T3",
+        "burst": 3,
+        "period": 10,
+        "deadline": 10
+      }
+    ],
+    "rm": {
+      "jobs_released": 17,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 17,
+      "dispatches": 20,
+      "context_switches": 3,
+      "busy": 33,
+      "idle": 7,
+      "avg_response": 0.7647058823529411,
+      "max_tardiness": 0
+    },
+    "edf": {
+      "jobs_released": 17,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 17,
+      "dispatches": 17,
+      "context_switches": 0,
+      "busy": 33,
+      "idle": 7,
+      "avg_response": 1.1764705882352942,
+      "max_tardiness": 0
+    }
+  },
+  "ex3_3_edf_not_rm": {
+    "name": "ex3_3_edf_not_rm",
+    "title": "Ex3-3 \u2014 EDF-feasible, RM-unschedulable (RTA diverges on T3)",
+    "horizon": 140,
+    "hyperperiod": 140,
+    "utilization": 0.9357142857142857,
+    "rm_bound": 0.7797631496846196,
+    "n_tasks": 3,
+    "rta": [
+      {
+        "pid": "T1",
+        "r": 1,
+        "seq": [
+          1
+        ],
+        "deadline": 4
+      },
+      {
+        "pid": "T2",
+        "r": 3,
+        "seq": [
+          2,
+          3
+        ],
+        "deadline": 5
+      },
+      {
+        "pid": "T3",
+        "r": null,
+        "seq": [
+          2,
+          5,
+          6,
+          8
+        ],
+        "deadline": 7
+      }
+    ],
+    "edf_demand_bound_ok": true,
+    "tasks": [
+      {
+        "pid": "T1",
+        "burst": 1,
+        "period": 4,
+        "deadline": 4
+      },
+      {
+        "pid": "T2",
+        "burst": 2,
+        "period": 5,
+        "deadline": 5
+      },
+      {
+        "pid": "T3",
+        "burst": 2,
+        "period": 7,
+        "deadline": 7
+      }
+    ],
+    "rm": {
+      "jobs_released": 83,
+      "deadline_misses": 1,
+      "late_completed": 1,
+      "unfinished": 0,
+      "jobs_completed": 83,
+      "dispatches": 102,
+      "context_switches": 19,
+      "busy": 131,
+      "idle": 9,
+      "avg_response": 0.40963855421686746,
+      "max_tardiness": 1
+    },
+    "edf": {
+      "jobs_released": 83,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 83,
+      "dispatches": 89,
+      "context_switches": 6,
+      "busy": 131,
+      "idle": 9,
+      "avg_response": 0.6506024096385542,
+      "max_tardiness": 0
+    }
+  },
+  "ex3_4_constrained_deadlines": {
+    "name": "ex3_4_constrained_deadlines",
+    "title": "Ex3-4 \u2014 constrained deadlines D < T (demand-bound test)",
+    "horizon": 63,
+    "hyperperiod": 63,
+    "utilization": 0.5079365079365079,
+    "rm_bound": 0.8284271247461903,
+    "n_tasks": 2,
+    "rta": [
+      {
+        "pid": "T1",
+        "r": 2,
+        "seq": [
+          2
+        ],
+        "deadline": 3
+      },
+      {
+        "pid": "T2",
+        "r": 4,
+        "seq": [
+          2,
+          4
+        ],
+        "deadline": 6
+      }
+    ],
+    "edf_demand_bound_ok": true,
+    "tasks": [
+      {
+        "pid": "T1",
+        "burst": 2,
+        "period": 7,
+        "deadline": 3
+      },
+      {
+        "pid": "T2",
+        "burst": 2,
+        "period": 9,
+        "deadline": 6
+      }
+    ],
+    "rm": {
+      "jobs_released": 16,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 16,
+      "dispatches": 17,
+      "context_switches": 1,
+      "busy": 32,
+      "idle": 31,
+      "avg_response": 0.1875,
+      "max_tardiness": 0
+    },
+    "edf": {
+      "jobs_released": 16,
+      "deadline_misses": 0,
+      "late_completed": 0,
+      "unfinished": 0,
+      "jobs_completed": 16,
+      "dispatches": 17,
+      "context_switches": 1,
+      "busy": 32,
+      "idle": 31,
+      "avg_response": 0.1875,
+      "max_tardiness": 0
+    }
+  },
+  "ex3_5_overload": {
+    "name": "ex3_5_overload",
+    "title": "Ex3-5 \u2014 overloaded (U > 1): nobody is feasible",
+    "horizon": 84,
+    "hyperperiod": 210,
+    "utilization": 1.019047619047619,
+    "rm_bound": 0.7797631496846196,
+    "n_tasks": 3,
+    "rta": [
+      {
+        "pid": "T1",
+        "r": 2,
+        "seq": [
+          2
+        ],
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "r": 4,
+        "seq": [
+          2,
+          4
+        ],
+        "deadline": 6
+      },
+      {
+        "pid": "T3",
+        "r": null,
+        "seq": [
+          2,
+          6,
+          8
+        ],
+        "deadline": 7
+      }
+    ],
+    "edf_demand_bound_ok": false,
+    "tasks": [
+      {
+        "pid": "T1",
+        "burst": 2,
+        "period": 5,
+        "deadline": 5
+      },
+      {
+        "pid": "T2",
+        "burst": 2,
+        "period": 6,
+        "deadline": 6
+      },
+      {
+        "pid": "T3",
+        "burst": 2,
+        "period": 7,
+        "deadline": 7
+      }
+    ],
+    "rm": {
+      "jobs_released": 43,
+      "deadline_misses": 12,
+      "late_completed": 11,
+      "unfinished": 1,
+      "jobs_completed": 42,
+      "dispatches": 50,
+      "context_switches": 8,
+      "busy": 84,
+      "idle": 0,
+      "avg_response": 2.380952380952381,
+      "max_tardiness": 8
+    },
+    "edf": {
+      "jobs_released": 43,
+      "deadline_misses": 1,
+      "late_completed": 0,
+      "unfinished": 1,
+      "jobs_completed": 42,
+      "dispatches": 42,
+      "context_switches": 0,
+      "busy": 84,
+      "idle": 0,
+      "avg_response": 2.7142857142857144,
+      "max_tardiness": 0
+    }
+  }
+}

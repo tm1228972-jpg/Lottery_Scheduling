@@ -1,0 +1,62 @@
+ t | released | pick | remaining after tick | remark
+---+----------+------+-----------------------+------------------------------
+ 0 | T1,T2,T3 | T1   | T1:1 T2:2 T3:2        | +T1,T2,T3 released
+ 1 | ·        | T1   | T1:0 T2:2 T3:2        | T1 done @ t=2, deadline 5 ok
+ 2 | ·        | T2   | T2:1 T3:2             | run
+ 3 | ·        | T2   | T2:0 T3:2             | T2 done @ t=4, deadline 6 ok
+ 4 | ·        | T3   | T3:1                  | run
+ 5 | T1       | T1   | T1:1 T3:1             | +T1 released
+ 6 | T2       | T1   | T1:0 T2:2 T3:1        | +T2 released; T1 done @ t=7, deadline 10 ok
+ 7 | T3       | T2   | T2:1 T3:2             | +T3 released
+ 8 | ·        | T2   | T2:0 T3:2             | T2 done @ t=9, deadline 12 ok
+ 9 | ·        | T3   | T3:2                  | T3 done @ t=10, deadline 7 MISS
+10 | T1       | T1   | T1:1 T3:2             | +T1 released
+11 | ·        | T1   | T1:0 T3:2             | T1 done @ t=12, deadline 15 ok
+12 | T2       | T2   | T2:1 T3:2             | +T2 released
+13 | ·        | T2   | T2:0 T3:2             | T2 done @ t=14, deadline 18 ok
+14 | T3       | T3   | T3:2                  | +T3 released
+15 | T1       | T1   | T1:1 T3:2             | +T1 released
+16 | ·        | T1   | T1:0 T3:2             | T1 done @ t=17, deadline 20 ok
+17 | ·        | T3   | T3:2                  | T3 done @ t=18, deadline 14 MISS
+18 | T2       | T2   | T2:1 T3:2             | +T2 released
+19 | ·        | T2   | T2:0 T3:2             | T2 done @ t=20, deadline 24 ok
+20 | T1       | T1   | T1:1 T3:2             | +T1 released
+21 | T3       | T1   | T1:0 T3:2             | +T3 released; T1 done @ t=22, deadline 25 ok
+22 | ·        | T3   | T3:2                  | run
+23 | ·        | T3   | T3:2                  | T3 done @ t=24, deadline 21 MISS
+24 | T2       | T2   | T2:1 T3:2             | +T2 released
+25 | T1       | T1   | T1:1 T2:1 T3:2        | +T1 released
+26 | ·        | T1   | T1:0 T2:1 T3:2        | T1 done @ t=27, deadline 30 ok
+27 | ·        | T2   | T2:0 T3:2             | T2 done @ t=28, deadline 30 ok
+28 | T3       | T3   | T3:2                  | +T3 released
+29 | ·        | T3   | T3:2                  | T3 done @ t=30, deadline 28 MISS
+30 | T1,T2    | T1   | T1:1 T2:2 T3:2        | +T1,T2 released
+31 | ·        | T1   | T1:0 T2:2 T3:2        | T1 done @ t=32, deadline 35 ok
+32 | ·        | T2   | T2:1 T3:2             | run
+33 | ·        | T2   | T2:0 T3:2             | T2 done @ t=34, deadline 36 ok
+34 | ·        | T3   | T3:1                  | run
+35 | T1,T3    | T1   | T1:1 T3:2             | +T1,T3 released
+36 | T2       | T1   | T1:0 T2:2 T3:2        | +T2 released; T1 done @ t=37, deadline 40 ok
+37 | ·        | T2   | T2:1 T3:2             | run
+38 | ·        | T2   | T2:0 T3:2             | T2 done @ t=39, deadline 42 ok
+39 | ·        | T3   | T3:2                  | T3 done @ t=40, deadline 35 MISS
+40 | T1       | T1   | T1:1 T3:2             | +T1 released
+41 | ·        | T1   | T1:0 T3:2             | T1 done @ t=42, deadline 45 ok
+42 | T2,T3    | T2   | T2:1 T3:2             | +T2,T3 released
+43 | ·        | T2   | T2:0 T3:2             | T2 done @ t=44, deadline 48 ok
+44 | ·        | T3   | T3:2                  | run
+45 | T1       | T1   | T1:1 T3:2             | +T1 released
+46 | ·        | T1   | T1:0 T3:2             | T1 done @ t=47, deadline 50 ok
+47 | ·        | T3   | T3:2                  | T3 done @ t=48, deadline 42 MISS
+48 | T2       | T2   | T2:1 T3:2             | +T2 released
+49 | T3       | T2   | T2:0 T3:2             | +T3 released; T2 done @ t=50, deadline 54 ok
+50 | T1       | T1   | T1:1 T3:2             | +T1 released
+51 | ·        | T1   | T1:0 T3:2             | T1 done @ t=52, deadline 55 ok
+52 | ·        | T3   | T3:2                  | run
+53 | ·        | T3   | T3:2                  | T3 done @ t=54, deadline 49 MISS
+54 | T2       | T2   | T2:1 T3:2             | +T2 released
+55 | T1       | T1   | T1:1 T2:1 T3:2        | +T1 released
+56 | T3       | T1   | T1:0 T2:1 T3:2        | +T3 released; T1 done @ t=57, deadline 60 ok
+57 | ·        | T2   | T2:0 T3:2             | T2 done @ t=58, deadline 60 ok
+58 | ·        | T3   | T3:2                  | run
+59 | ·        | T3   | T3:2                  | T3 done @ t=60, deadline 56 MISS

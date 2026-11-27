@@ -1,0 +1,10 @@
+{
+  "name": "ex3_5_overload",
+  "title": "Ex3-5 — overloaded (U > 1): nobody is feasible",
+  "tasks": [
+    {"pid": "T1", "burst": 2, "period": 5, "deadline": 5},
+    {"pid": "T2", "burst": 2, "period": 6, "deadline": 6},
+    {"pid": "T3", "burst": 2, "period": 7, "deadline": 7}
+  ],
+  "horizon": 84
+}

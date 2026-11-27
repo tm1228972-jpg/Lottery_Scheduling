@@ -1,0 +1,5 @@
+ex3_3_edf_not_rm — RM response-time analysis (period order)
+============================================================
+T1 (C=1,T=4,D=4): seq=[1] -> R=1
+T2 (C=2,T=5,D=5): seq=[2, 3] -> R=3
+T3 (C=2,T=7,D=7): seq=[2, 5, 6, 8] -> R=None

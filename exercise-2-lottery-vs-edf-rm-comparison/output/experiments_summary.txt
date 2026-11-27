@@ -1,0 +1,26 @@
+Exercise 2 — Lottery vs EDF/RM: experiment summary
+==============================================================
+
+set_a_harmonic  (U=0.750)
+  lottery  misses= 0 avg_resp=0.61 ctx=  4 disp= 45 max_tard=0
+  rm       misses= 0 avg_resp=0.64 ctx=  3 disp= 36 max_tard=0
+  edf      misses= 0 avg_resp=0.73 ctx=  0 disp= 33 max_tard=0
+
+set_b_edf_yes_rm_no  (U=0.972)
+  lottery  misses= 3 avg_resp=1.02 ctx=  7 disp= 70 max_tard=3
+  rm       misses= 2 avg_resp=0.81 ctx=  6 disp= 68 max_tard=2
+  edf      misses= 0 avg_resp=1.13 ctx=  4 disp= 66 max_tard=0
+
+set_c_overloaded  (U=1.019)
+  lottery  misses=18 avg_resp=1.62 ctx= 24 disp= 84 max_tard=8
+  rm       misses=12 avg_resp=2.38 ctx=  8 disp= 50 max_tard=8
+  edf      misses= 1 avg_resp=2.71 ctx=  0 disp= 42 max_tard=0
+
+set_d_mixed  (U=0.916)
+  lottery  misses= 9 avg_resp=0.96 ctx=  2 disp= 61 max_tard=4
+  rm       misses= 0 avg_resp=0.20 ctx= 12 disp= 61 max_tard=0
+  edf      misses= 0 avg_resp=0.29 ctx= 12 disp= 61 max_tard=0
+
+lottery seed sweep (20 seeds), misses:
+  set_b: [2, 2, 4, 2, 3, 4, 3, 1, 2, 2, 2, 4, 2, 4, 2, 2, 0, 3, 2, 2]
+  set_d: [11, 9, 10, 11, 11, 9, 11, 14, 10, 8, 8, 12, 14, 10, 11, 8, 11, 6, 12, 10]

@@ -1,0 +1,10 @@
+{
+  "name": "set_b_edf_yes_rm_no",
+  "tasks": [
+    {"pid": "T1", "burst": 1, "period": 3, "tickets": 6},
+    {"pid": "T2", "burst": 1, "period": 4, "tickets": 4},
+    {"pid": "T3", "burst": 1, "period": 6, "tickets": 3},
+    {"pid": "T4", "burst": 2, "period": 9, "tickets": 2}
+  ],
+  "horizon": 72
+}

@@ -1,0 +1,9 @@
+{
+  "name": "set_d_mixed",
+  "tasks": [
+    {"pid": "IO", "burst": 1, "period": 2, "tickets": 1},
+    {"pid": "BATCH", "burst": 3, "period": 11, "tickets": 9},
+    {"pid": "CTRL", "burst": 1, "period": 7, "tickets": 2}
+  ],
+  "horizon": 66
+}

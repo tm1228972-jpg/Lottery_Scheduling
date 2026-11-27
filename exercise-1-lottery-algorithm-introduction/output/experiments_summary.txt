@@ -1,0 +1,37 @@
+Exercise 1 — Lottery Scheduling: experiment summary
+==========================================================
+
+Scenario results (terminating workloads):
+  baseline        avg wait   5.60  avg TAT   8.60  avg resp   4.40  ctx   6  share err 0.0533
+  fair            avg wait  25.50  avg TAT  37.50  avg resp   8.00  ctx  18  share err 0.0000
+  dominance       avg wait   3.33  avg TAT   5.33  avg resp   3.33  ctx   5  share err 0.0490
+  compensation    avg wait    n/a  avg TAT    n/a  avg resp   4.00  ctx 488  share err 0.0889
+  transfer        avg wait  39.33  avg TAT  69.33  avg resp   4.00  ctx  22  share err 0.1111
+  currencies      avg wait  37.00  avg TAT  53.00  avg resp   4.00  ctx  18  share err 0.1250
+
+Steady state (50 seeds, horizon 600):
+  T5: mean 0.4999  stdev 0.0202
+  T3: mean 0.2980  stdev 0.0177
+  T2: mean 0.2020  stdev 0.0163
+
+Convergence final shares (1500-tick run): {'T5': 0.5126666666666667, 'T3': 0.30933333333333335, 'T2': 0.178}
+
+Quantum sweep:
+  q=1: ctx  11  dispatches  15  avg resp 2.80  avg TAT 9.40
+  q=2: ctx   6  dispatches   9  avg resp 4.40  avg TAT 8.60
+  q=3: ctx   4  dispatches   7  avg resp 5.40  avg TAT 8.40
+  q=4: ctx   4  dispatches   6  avg resp 5.40  avg TAT 8.40
+  q=6: ctx   4  dispatches   5  avg resp 5.40  avg TAT 8.40
+  q=8: ctx   4  dispatches   5  avg resp 5.40  avg TAT 8.40
+
+Compensation (horizon 2000):
+  no_compensation: IO tick share 0.1350  grants 0  IO decisions 135
+  compensation: IO tick share 0.2000  grants 200  IO decisions 200
+
+Ticket sweep (t vs 30 held by others, horizon 900):
+  t= 1: observed 0.0356   ideal 0.0323
+  t= 2: observed 0.0622   ideal 0.0625
+  t= 3: observed 0.0867   ideal 0.0909
+  t= 5: observed 0.1400   ideal 0.1429
+  t= 8: observed 0.2156   ideal 0.2105
+  t=12: observed 0.2856   ideal 0.2857

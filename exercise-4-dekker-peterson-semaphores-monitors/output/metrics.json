@@ -1,0 +1,38 @@
+{
+  "exercise": 4,
+  "title": "Dekker, Peterson, semaphores, and monitors",
+  "model_checking": {
+    "dekker": {
+      "states": 53,
+      "transitions": 83,
+      "safety_violations": 0,
+      "deadlock_states": 0,
+      "live": true
+    },
+    "peterson": {
+      "states": 34,
+      "transitions": 46,
+      "safety_violations": 0,
+      "deadlock_states": 0,
+      "live": true
+    },
+    "turn_only": {
+      "states": 12,
+      "transitions": 13,
+      "safety_violations": 0,
+      "deadlock_states": 0,
+      "live": true
+    },
+    "flag_only": {
+      "states": 21,
+      "transitions": 26,
+      "safety_violations": 0,
+      "deadlock_states": 1,
+      "live": false
+    }
+  },
+  "counter_benchmark": "see output/counter_bench.json",
+  "fairness": "see output/fairness.json",
+  "buffer": "see output/buffer.json",
+  "tests": "15 passed"
+}

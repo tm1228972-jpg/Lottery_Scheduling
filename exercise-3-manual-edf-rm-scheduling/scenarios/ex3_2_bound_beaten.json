@@ -1,0 +1,10 @@
+{
+  "name": "ex3_2_bound_beaten",
+  "title": "Ex3-2 — above the Liu-Layland bound, still RM-schedulable (RTA decides)",
+  "tasks": [
+    {"pid": "T1", "burst": 2, "period": 5, "deadline": 5},
+    {"pid": "T2", "burst": 1, "period": 8, "deadline": 8},
+    {"pid": "T3", "burst": 3, "period": 10, "deadline": 10}
+  ],
+  "horizon": 40
+}

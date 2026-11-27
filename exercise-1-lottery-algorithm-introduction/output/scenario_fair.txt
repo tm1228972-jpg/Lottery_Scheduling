@@ -1,0 +1,21 @@
+scenario: fair.json
+
+| B  | A  | C  | A  | C  | B  | A  | C  | A  | B  |   A    | C  | D  |   B    | C  | D  | C  | B  |       D        |
+0-2:B  2-4:A  4-6:C  6-8:A  8-10:C  10-12:B  12-14:A  14-16:C  16-18:A  18-20:B  20-24:A  24-26:C  26-28:D  28-32:B  32-34:C  34-36:D  36-38:C  38-40:B  40-48:D
+
+PID     Arr Burst Tickets   Fin  Wait   TAT  Resp   Tick%   Decis    |Err|
+--------------------------------------------------------------------------
+A         0    12      10    24    12    24     2   0.250   0.250   0.0000
+B         0    12      10    40    28    40     0   0.250   0.250   0.0000
+C         0    12      10    38    26    38     4   0.250   0.250   0.0000
+D         0    12      10    48    36    48    26   0.250   0.250   0.0000
+--------------------------------------------------------------------------
+avg waiting   = 25.50
+avg turnaround= 37.50
+avg response  = 8.00
+avg share err = 0.0000   max = 0.0000
+total time    = 48   busy = 48   idle = 0
+CPU utilization = 100.00%
+throughput    = 0.0833 proc/tick
+context switches (proc->proc) = 18   dispatches = 24   total switches = 18
+preemptions = 20   draws = 24   compensation grants = 0

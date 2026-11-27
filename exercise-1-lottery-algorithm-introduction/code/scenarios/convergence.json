@@ -1,0 +1,5 @@
+{"quantum": 1, "seed": 31415, "horizon": 1500,
+ "processes": [
+  {"pid": "T5", "arrival": 0, "burst": 1000000000, "tickets": 5},
+  {"pid": "T3", "arrival": 0, "burst": 1000000000, "tickets": 3},
+  {"pid": "T2", "arrival": 0, "burst": 1000000000, "tickets": 2}]}

@@ -1,0 +1,22 @@
+[
+  {
+    "capacity": 3,
+    "n_items": 300,
+    "mechanism": "semaphore",
+    "produced": 300,
+    "consumed": 300,
+    "conservation_ok": true,
+    "max_occupancy": 3,
+    "capacity_respected": true
+  },
+  {
+    "capacity": 3,
+    "n_items": 300,
+    "mechanism": "monitor",
+    "produced": 300,
+    "consumed": 300,
+    "conservation_ok": true,
+    "max_occupancy": 3,
+    "capacity_respected": true
+  }
+]

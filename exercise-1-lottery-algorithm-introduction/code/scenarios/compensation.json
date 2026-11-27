@@ -1,0 +1,5 @@
+{"quantum": 4, "seed": 2024, "compensation": true, "horizon": 2000,
+ "processes": [
+  {"pid": "IO", "arrival": 0, "burst": 1000000000, "tickets": 10, "io_every": 2, "io_len": 3},
+  {"pid": "CPU1", "arrival": 0, "burst": 1000000000, "tickets": 10},
+  {"pid": "CPU2", "arrival": 0, "burst": 1000000000, "tickets": 10}]}

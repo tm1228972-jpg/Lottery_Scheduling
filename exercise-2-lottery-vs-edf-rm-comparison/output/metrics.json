@@ -1,0 +1,164 @@
+{
+  "lottery": {
+    "policy": "lottery",
+    "seed": 20261127,
+    "horizon": 60,
+    "utilization": 0.75,
+    "rm_bound_3_required_note": "n(2^(1/n)-1) for n=3 is 0.7798",
+    "busy": 45,
+    "idle": 15,
+    "dispatches": 37,
+    "context_switches": 25,
+    "jobs_released": 33,
+    "jobs_completed": 33,
+    "deadline_misses": 0,
+    "max_tardiness": 0,
+    "avg_response": 0.6060606060606061,
+    "per_task": {
+      "T1": {
+        "jobs_released": 15,
+        "jobs_completed": 15,
+        "tickets": 6,
+        "ticket_fraction": 0.6,
+        "cpu_ticks": 15,
+        "cpu_share": 0.3333333333333333,
+        "share_error": 0.26666666666666666,
+        "deadline_misses": 0,
+        "avg_response": 0.3333333333333333,
+        "max_response": 1
+      },
+      "T2": {
+        "jobs_released": 12,
+        "jobs_completed": 12,
+        "tickets": 3,
+        "ticket_fraction": 0.3,
+        "cpu_ticks": 24,
+        "cpu_share": 0.5333333333333333,
+        "share_error": 0.23333333333333334,
+        "deadline_misses": 0,
+        "avg_response": 0.16666666666666666,
+        "max_response": 1
+      },
+      "T3": {
+        "jobs_released": 6,
+        "jobs_completed": 6,
+        "tickets": 1,
+        "ticket_fraction": 0.1,
+        "cpu_ticks": 6,
+        "cpu_share": 0.13333333333333333,
+        "share_error": 0.033333333333333326,
+        "deadline_misses": 0,
+        "avg_response": 2.1666666666666665,
+        "max_response": 3
+      }
+    }
+  },
+  "rm": {
+    "policy": "rm",
+    "seed": 20261127,
+    "horizon": 60,
+    "utilization": 0.75,
+    "rm_bound_3_required_note": "n(2^(1/n)-1) for n=3 is 0.7798",
+    "busy": 45,
+    "idle": 15,
+    "dispatches": 33,
+    "context_switches": 21,
+    "jobs_released": 33,
+    "jobs_completed": 33,
+    "deadline_misses": 0,
+    "max_tardiness": 0,
+    "avg_response": 0.7272727272727273,
+    "per_task": {
+      "T1": {
+        "jobs_released": 15,
+        "jobs_completed": 15,
+        "tickets": 6,
+        "ticket_fraction": 0.6,
+        "cpu_ticks": 15,
+        "cpu_share": 0.3333333333333333,
+        "share_error": 0.26666666666666666,
+        "deadline_misses": 0,
+        "avg_response": 0.2,
+        "max_response": 1
+      },
+      "T2": {
+        "jobs_released": 12,
+        "jobs_completed": 12,
+        "tickets": 3,
+        "ticket_fraction": 0.3,
+        "cpu_ticks": 24,
+        "cpu_share": 0.5333333333333333,
+        "share_error": 0.23333333333333334,
+        "deadline_misses": 0,
+        "avg_response": 0.25,
+        "max_response": 1
+      },
+      "T3": {
+        "jobs_released": 6,
+        "jobs_completed": 6,
+        "tickets": 1,
+        "ticket_fraction": 0.1,
+        "cpu_ticks": 6,
+        "cpu_share": 0.13333333333333333,
+        "share_error": 0.033333333333333326,
+        "deadline_misses": 0,
+        "avg_response": 3.0,
+        "max_response": 3
+      }
+    }
+  },
+  "edf": {
+    "policy": "edf",
+    "seed": 20261127,
+    "horizon": 60,
+    "utilization": 0.75,
+    "rm_bound_3_required_note": "n(2^(1/n)-1) for n=3 is 0.7798",
+    "busy": 45,
+    "idle": 15,
+    "dispatches": 33,
+    "context_switches": 21,
+    "jobs_released": 33,
+    "jobs_completed": 33,
+    "deadline_misses": 0,
+    "max_tardiness": 0,
+    "avg_response": 0.7272727272727273,
+    "per_task": {
+      "T1": {
+        "jobs_released": 15,
+        "jobs_completed": 15,
+        "tickets": 6,
+        "ticket_fraction": 0.6,
+        "cpu_ticks": 15,
+        "cpu_share": 0.3333333333333333,
+        "share_error": 0.26666666666666666,
+        "deadline_misses": 0,
+        "avg_response": 0.2,
+        "max_response": 1
+      },
+      "T2": {
+        "jobs_released": 12,
+        "jobs_completed": 12,
+        "tickets": 3,
+        "ticket_fraction": 0.3,
+        "cpu_ticks": 24,
+        "cpu_share": 0.5333333333333333,
+        "share_error": 0.23333333333333334,
+        "deadline_misses": 0,
+        "avg_response": 0.25,
+        "max_response": 1
+      },
+      "T3": {
+        "jobs_released": 6,
+        "jobs_completed": 6,
+        "tickets": 1,
+        "ticket_fraction": 0.1,
+        "cpu_ticks": 6,
+        "cpu_share": 0.13333333333333333,
+        "share_error": 0.033333333333333326,
+        "deadline_misses": 0,
+        "avg_response": 3.0,
+        "max_response": 3
+      }
+    }
+  }
+}

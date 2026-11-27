@@ -1,0 +1,481 @@
+{
+  "workload": {
+    "tickets": {
+      "P1": 5,
+      "P2": 3,
+      "P3": 2
+    },
+    "decisions_per_run": 10000,
+    "seeds": 50
+  },
+  "target_shares": {
+    "P1": 0.5,
+    "P2": 0.3,
+    "P3": 0.2
+  },
+  "lottery": {
+    "mean_max_absolute_share_error": 0.005976000000000002,
+    "worst_max_absolute_share_error": 0.012800000000000034,
+    "runs": [
+      {
+        "seed": 0,
+        "shares": {
+          "P1": 0.503,
+          "P2": 0.3014,
+          "P3": 0.1956
+        },
+        "max_absolute_share_error": 0.004400000000000015
+      },
+      {
+        "seed": 1,
+        "shares": {
+          "P1": 0.4983,
+          "P2": 0.2999,
+          "P3": 0.2018
+        },
+        "max_absolute_share_error": 0.001799999999999996
+      },
+      {
+        "seed": 2,
+        "shares": {
+          "P1": 0.5043,
+          "P2": 0.3014,
+          "P3": 0.1943
+        },
+        "max_absolute_share_error": 0.005700000000000011
+      },
+      {
+        "seed": 3,
+        "shares": {
+          "P1": 0.4939,
+          "P2": 0.3103,
+          "P3": 0.1958
+        },
+        "max_absolute_share_error": 0.010300000000000031
+      },
+      {
+        "seed": 4,
+        "shares": {
+          "P1": 0.5012,
+          "P2": 0.3001,
+          "P3": 0.1987
+        },
+        "max_absolute_share_error": 0.0013000000000000234
+      },
+      {
+        "seed": 5,
+        "shares": {
+          "P1": 0.5007,
+          "P2": 0.2963,
+          "P3": 0.203
+        },
+        "max_absolute_share_error": 0.003699999999999981
+      },
+      {
+        "seed": 6,
+        "shares": {
+          "P1": 0.5032,
+          "P2": 0.3026,
+          "P3": 0.1942
+        },
+        "max_absolute_share_error": 0.0058
+      },
+      {
+        "seed": 7,
+        "shares": {
+          "P1": 0.5087,
+          "P2": 0.3003,
+          "P3": 0.191
+        },
+        "max_absolute_share_error": 0.009000000000000008
+      },
+      {
+        "seed": 8,
+        "shares": {
+          "P1": 0.4998,
+          "P2": 0.2992,
+          "P3": 0.201
+        },
+        "max_absolute_share_error": 0.0010000000000000009
+      },
+      {
+        "seed": 9,
+        "shares": {
+          "P1": 0.5034,
+          "P2": 0.298,
+          "P3": 0.1986
+        },
+        "max_absolute_share_error": 0.0033999999999999586
+      },
+      {
+        "seed": 10,
+        "shares": {
+          "P1": 0.4911,
+          "P2": 0.3055,
+          "P3": 0.2034
+        },
+        "max_absolute_share_error": 0.008900000000000019
+      },
+      {
+        "seed": 11,
+        "shares": {
+          "P1": 0.4957,
+          "P2": 0.3,
+          "P3": 0.2043
+        },
+        "max_absolute_share_error": 0.004300000000000026
+      },
+      {
+        "seed": 12,
+        "shares": {
+          "P1": 0.4993,
+          "P2": 0.2953,
+          "P3": 0.2054
+        },
+        "max_absolute_share_error": 0.005399999999999988
+      },
+      {
+        "seed": 13,
+        "shares": {
+          "P1": 0.5029,
+          "P2": 0.2975,
+          "P3": 0.1996
+        },
+        "max_absolute_share_error": 0.0029000000000000137
+      },
+      {
+        "seed": 14,
+        "shares": {
+          "P1": 0.4994,
+          "P2": 0.3053,
+          "P3": 0.1953
+        },
+        "max_absolute_share_error": 0.005300000000000027
+      },
+      {
+        "seed": 15,
+        "shares": {
+          "P1": 0.5016,
+          "P2": 0.2983,
+          "P3": 0.2001
+        },
+        "max_absolute_share_error": 0.0016999999999999793
+      },
+      {
+        "seed": 16,
+        "shares": {
+          "P1": 0.5107,
+          "P2": 0.2974,
+          "P3": 0.1919
+        },
+        "max_absolute_share_error": 0.010700000000000043
+      },
+      {
+        "seed": 17,
+        "shares": {
+          "P1": 0.4964,
+          "P2": 0.2984,
+          "P3": 0.2052
+        },
+        "max_absolute_share_error": 0.005199999999999982
+      },
+      {
+        "seed": 18,
+        "shares": {
+          "P1": 0.5036,
+          "P2": 0.2942,
+          "P3": 0.2022
+        },
+        "max_absolute_share_error": 0.005799999999999972
+      },
+      {
+        "seed": 19,
+        "shares": {
+          "P1": 0.502,
+          "P2": 0.2993,
+          "P3": 0.1987
+        },
+        "max_absolute_share_error": 0.0020000000000000018
+      },
+      {
+        "seed": 20,
+        "shares": {
+          "P1": 0.5128,
+          "P2": 0.2893,
+          "P3": 0.1979
+        },
+        "max_absolute_share_error": 0.012800000000000034
+      },
+      {
+        "seed": 21,
+        "shares": {
+          "P1": 0.4984,
+          "P2": 0.3063,
+          "P3": 0.1953
+        },
+        "max_absolute_share_error": 0.006300000000000028
+      },
+      {
+        "seed": 22,
+        "shares": {
+          "P1": 0.4994,
+          "P2": 0.297,
+          "P3": 0.2036
+        },
+        "max_absolute_share_error": 0.003599999999999992
+      },
+      {
+        "seed": 23,
+        "shares": {
+          "P1": 0.506,
+          "P2": 0.2956,
+          "P3": 0.1984
+        },
+        "max_absolute_share_error": 0.006000000000000005
+      },
+      {
+        "seed": 24,
+        "shares": {
+          "P1": 0.4982,
+          "P2": 0.301,
+          "P3": 0.2008
+        },
+        "max_absolute_share_error": 0.0018000000000000238
+      },
+      {
+        "seed": 25,
+        "shares": {
+          "P1": 0.4996,
+          "P2": 0.2983,
+          "P3": 0.2021
+        },
+        "max_absolute_share_error": 0.0020999999999999908
+      },
+      {
+        "seed": 26,
+        "shares": {
+          "P1": 0.4978,
+          "P2": 0.2986,
+          "P3": 0.2036
+        },
+        "max_absolute_share_error": 0.003599999999999992
+      },
+      {
+        "seed": 27,
+        "shares": {
+          "P1": 0.491,
+          "P2": 0.3099,
+          "P3": 0.1991
+        },
+        "max_absolute_share_error": 0.00990000000000002
+      },
+      {
+        "seed": 28,
+        "shares": {
+          "P1": 0.5022,
+          "P2": 0.3016,
+          "P3": 0.1962
+        },
+        "max_absolute_share_error": 0.003799999999999998
+      },
+      {
+        "seed": 29,
+        "shares": {
+          "P1": 0.4973,
+          "P2": 0.3024,
+          "P3": 0.2003
+        },
+        "max_absolute_share_error": 0.00269999999999998
+      },
+      {
+        "seed": 30,
+        "shares": {
+          "P1": 0.5094,
+          "P2": 0.3026,
+          "P3": 0.188
+        },
+        "max_absolute_share_error": 0.01200000000000001
+      },
+      {
+        "seed": 31,
+        "shares": {
+          "P1": 0.4917,
+          "P2": 0.3117,
+          "P3": 0.1966
+        },
+        "max_absolute_share_error": 0.011699999999999988
+      },
+      {
+        "seed": 32,
+        "shares": {
+          "P1": 0.502,
+          "P2": 0.2987,
+          "P3": 0.1993
+        },
+        "max_absolute_share_error": 0.0020000000000000018
+      },
+      {
+        "seed": 33,
+        "shares": {
+          "P1": 0.4938,
+          "P2": 0.3084,
+          "P3": 0.1978
+        },
+        "max_absolute_share_error": 0.008400000000000019
+      },
+      {
+        "seed": 34,
+        "shares": {
+          "P1": 0.5001,
+          "P2": 0.2982,
+          "P3": 0.2017
+        },
+        "max_absolute_share_error": 0.0017999999999999683
+      },
+      {
+        "seed": 35,
+        "shares": {
+          "P1": 0.5113,
+          "P2": 0.2953,
+          "P3": 0.1934
+        },
+        "max_absolute_share_error": 0.011299999999999977
+      },
+      {
+        "seed": 36,
+        "shares": {
+          "P1": 0.5102,
+          "P2": 0.2907,
+          "P3": 0.1991
+        },
+        "max_absolute_share_error": 0.010199999999999987
+      },
+      {
+        "seed": 37,
+        "shares": {
+          "P1": 0.496,
+          "P2": 0.3037,
+          "P3": 0.2003
+        },
+        "max_absolute_share_error": 0.0040000000000000036
+      },
+      {
+        "seed": 38,
+        "shares": {
+          "P1": 0.4976,
+          "P2": 0.3005,
+          "P3": 0.2019
+        },
+        "max_absolute_share_error": 0.0024000000000000132
+      },
+      {
+        "seed": 39,
+        "shares": {
+          "P1": 0.506,
+          "P2": 0.2994,
+          "P3": 0.1946
+        },
+        "max_absolute_share_error": 0.006000000000000005
+      },
+      {
+        "seed": 40,
+        "shares": {
+          "P1": 0.4889,
+          "P2": 0.3059,
+          "P3": 0.2052
+        },
+        "max_absolute_share_error": 0.011099999999999999
+      },
+      {
+        "seed": 41,
+        "shares": {
+          "P1": 0.5042,
+          "P2": 0.3005,
+          "P3": 0.1953
+        },
+        "max_absolute_share_error": 0.00470000000000001
+      },
+      {
+        "seed": 42,
+        "shares": {
+          "P1": 0.4943,
+          "P2": 0.3056,
+          "P3": 0.2001
+        },
+        "max_absolute_share_error": 0.005699999999999983
+      },
+      {
+        "seed": 43,
+        "shares": {
+          "P1": 0.4906,
+          "P2": 0.3059,
+          "P3": 0.2035
+        },
+        "max_absolute_share_error": 0.00940000000000002
+      },
+      {
+        "seed": 44,
+        "shares": {
+          "P1": 0.5041,
+          "P2": 0.2894,
+          "P3": 0.2065
+        },
+        "max_absolute_share_error": 0.010599999999999998
+      },
+      {
+        "seed": 45,
+        "shares": {
+          "P1": 0.5038,
+          "P2": 0.2934,
+          "P3": 0.2028
+        },
+        "max_absolute_share_error": 0.006599999999999995
+      },
+      {
+        "seed": 46,
+        "shares": {
+          "P1": 0.508,
+          "P2": 0.2938,
+          "P3": 0.1982
+        },
+        "max_absolute_share_error": 0.008000000000000007
+      },
+      {
+        "seed": 47,
+        "shares": {
+          "P1": 0.4941,
+          "P2": 0.2945,
+          "P3": 0.2114
+        },
+        "max_absolute_share_error": 0.011399999999999993
+      },
+      {
+        "seed": 48,
+        "shares": {
+          "P1": 0.4931,
+          "P2": 0.2999,
+          "P3": 0.207
+        },
+        "max_absolute_share_error": 0.0069999999999999785
+      },
+      {
+        "seed": 49,
+        "shares": {
+          "P1": 0.4967,
+          "P2": 0.3019,
+          "P3": 0.2014
+        },
+        "max_absolute_share_error": 0.003300000000000025
+      }
+    ]
+  },
+  "stride": {
+    "observed_shares": {
+      "P1": 0.5,
+      "P2": 0.3,
+      "P3": 0.2
+    },
+    "max_absolute_share_error": 0.0
+  },
+  "scope_note": "This is a single-CPU, always-runnable, equal-quantum allocation model. It does not measure wall-clock latency, cache effects, or a production kernel."
+}

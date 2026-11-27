@@ -1,0 +1,5 @@
+ex3_5_overload — RM response-time analysis (period order)
+============================================================
+T1 (C=2,T=5,D=5): seq=[2] -> R=2
+T2 (C=2,T=6,D=6): seq=[2, 4] -> R=4
+T3 (C=2,T=7,D=7): seq=[2, 6, 8] -> R=None

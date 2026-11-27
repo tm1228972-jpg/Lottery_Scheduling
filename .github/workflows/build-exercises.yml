@@ -1,0 +1,261 @@
+name: Validate and build all exercises
+
+on:
+  push:
+    branches:
+      - arena/ce95d03c-lottery-scheduling
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lottery-scheduling-exercise-build
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out requested branch
+        uses: actions/checkout@v4
+        with:
+          ref: arena/ce95d03c-lottery-scheduling
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install system tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg libreoffice poppler-utils
+          mkdir -p "$HOME/.local/share/fonts"
+          cp assets/fonts/*.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f
+
+      - name: Install Python packages
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compile all new exercise code
+        run: |
+          python -m compileall -q \
+            exercise-5-lottery-scheduling-synchronization-demo/code \
+            exercise-6-research-paper-and-seminar/code \
+            exercise-6-research-paper-and-seminar/seminar \
+            exercise-7-readers-writers-comparison/code \
+            exercise-8-dining-philosophers-deadlock-starvation/code
+
+      - name: Run regression tests for Exercises 1–8
+        run: |
+          pytest -q \
+            exercise-1-lottery-algorithm-introduction/tests \
+            exercise-2-lottery-vs-edf-rm-comparison/tests \
+            exercise-3-manual-edf-rm-scheduling/tests \
+            exercise-4-dekker-peterson-semaphores-monitors/tests \
+            exercise-5-lottery-scheduling-synchronization-demo/tests \
+            exercise-6-research-paper-and-seminar/tests \
+            exercise-7-readers-writers-comparison/tests \
+            exercise-8-dining-philosophers-deadlock-starvation/tests
+
+      - name: Generate experiment outputs
+        run: |
+          python exercise-5-lottery-scheduling-synchronization-demo/code/lottery_sync.py --decisions 3000 --seed 20261127
+          python exercise-5-lottery-scheduling-synchronization-demo/code/make_clip.py
+          python exercise-6-research-paper-and-seminar/code/research_experiment.py
+          python exercise-6-research-paper-and-seminar/seminar/make_slides.py
+          python exercise-7-readers-writers-comparison/code/readers_writers.py
+          python exercise-8-dining-philosophers-deadlock-starvation/code/dining.py
+          python tools/generate_report_visuals.py
+          python tools/build_exercise_decks.py
+
+      - name: Validate slide deck continuity and per-slide visuals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from pptx import Presentation
+
+          deck = Path("exercise-6-research-paper-and-seminar/docs/Lottery_Scheduling_Seminar.pptx")
+          prs = Presentation(str(deck))
+          if len(prs.slides) != 12:
+              raise SystemExit(f"Expected 12 consecutive slides, found {len(prs.slides)}")
+          for index, slide in enumerate(prs.slides, start=1):
+              visual_shapes = [
+                  shape for shape in slide.shapes
+                  if shape.name.startswith("VISUAL |")
+                  and shape.width > 0 and shape.height > 0
+              ]
+              if not visual_shapes:
+                  raise SystemExit(f"Slide {index} has no chart, diagram, or Gantt visual")
+              if len(slide.shapes) < 10:
+                  raise SystemExit(f"Slide {index} appears incomplete ({len(slide.shapes)} shapes)")
+              xml = slide._element.xml
+              if "<p:transition" not in xml or "<p:fade" not in xml:
+                  raise SystemExit(f"Slide {index} is missing its continuous fade transition")
+          print(f"Validated {len(prs.slides)} slides: each has a visual and a fast fade transition; no blank separators.")
+          PY
+
+      - name: Rebuild original reports with corrected Persian RTL layout
+        env:
+          # RTL shaping may alter line wrapping and reduce pagination without
+          # removing report content; the shortest existing report is 40 pages.
+          REPORT_MIN_PAGES: "40"
+        run: |
+          set -e
+          python tools/report_build.py en exercise-1-lottery-algorithm-introduction/REPORT_EN.md exercise-1-lottery-algorithm-introduction/docs/Exercise1_Lottery_Scheduling_EN
+          python tools/report_build.py fa exercise-1-lottery-algorithm-introduction/REPORT_FA.md exercise-1-lottery-algorithm-introduction/docs/Exercise1_Lottery_Scheduling_FA
+          python tools/report_build.py en exercise-2-lottery-vs-edf-rm-comparison/REPORT_EN.md exercise-2-lottery-vs-edf-rm-comparison/docs/Exercise2_Lottery_vs_EDF_RM_EN
+          python tools/report_build.py fa exercise-2-lottery-vs-edf-rm-comparison/REPORT_FA.md exercise-2-lottery-vs-edf-rm-comparison/docs/Exercise2_Lottery_vs_EDF_RM_FA
+          python tools/report_build.py en exercise-3-manual-edf-rm-scheduling/REPORT_EN.md exercise-3-manual-edf-rm-scheduling/docs/Exercise3_Manual_EDF_RM_EN
+          python tools/report_build.py fa exercise-3-manual-edf-rm-scheduling/REPORT_FA.md exercise-3-manual-edf-rm-scheduling/docs/Exercise3_Manual_EDF_RM_FA
+          python tools/report_build.py en exercise-4-dekker-peterson-semaphores-monitors/REPORT_EN.md exercise-4-dekker-peterson-semaphores-monitors/docs/Exercise4_Sync_Primitives_EN
+          python tools/report_build.py fa exercise-4-dekker-peterson-semaphores-monitors/REPORT_FA.md exercise-4-dekker-peterson-semaphores-monitors/docs/Exercise4_Sync_Primitives_FA
+
+      - name: Build bilingual reports for Exercises 5–8
+        env:
+          # Every new exercise report must exceed forty pages in both formats.
+          REPORT_MIN_PAGES: "41"
+        run: |
+          set -e
+          python tools/report_build.py en exercise-5-lottery-scheduling-synchronization-demo/REPORT_EN.md exercise-5-lottery-scheduling-synchronization-demo/docs/Exercise5_Lottery_Sync_EN
+          python tools/report_build.py fa exercise-5-lottery-scheduling-synchronization-demo/REPORT_FA.md exercise-5-lottery-scheduling-synchronization-demo/docs/Exercise5_Lottery_Sync_FA
+          python tools/report_build.py en exercise-6-research-paper-and-seminar/REPORT_EN.md exercise-6-research-paper-and-seminar/docs/Exercise6_Research_Paper_EN
+          python tools/report_build.py fa exercise-6-research-paper-and-seminar/REPORT_FA.md exercise-6-research-paper-and-seminar/docs/Exercise6_Research_Paper_FA
+          python tools/report_build.py en exercise-7-readers-writers-comparison/REPORT_EN.md exercise-7-readers-writers-comparison/docs/Exercise7_Readers_Writers_EN
+          python tools/report_build.py fa exercise-7-readers-writers-comparison/REPORT_FA.md exercise-7-readers-writers-comparison/docs/Exercise7_Readers_Writers_FA
+          python tools/report_build.py en exercise-8-dining-philosophers-deadlock-starvation/REPORT_EN.md exercise-8-dining-philosophers-deadlock-starvation/docs/Exercise8_Dining_Philosophers_EN
+          python tools/report_build.py fa exercise-8-dining-philosophers-deadlock-starvation/REPORT_FA.md exercise-8-dining-philosophers-deadlock-starvation/docs/Exercise8_Dining_Philosophers_FA
+
+      - name: Export seminar deck to PDF
+        run: |
+          libreoffice --headless -env:UserInstallation=file:///tmp/lo-seminar-profile \
+            --convert-to pdf --outdir exercise-6-research-paper-and-seminar/docs \
+            exercise-6-research-paper-and-seminar/docs/Lottery_Scheduling_Seminar.pptx
+          test -s exercise-6-research-paper-and-seminar/docs/Lottery_Scheduling_Seminar.pdf
+          for deck in exercise-*/docs/Exercise*_Visual_Seminar.pptx; do
+            outdir="$(dirname "$deck")"
+            libreoffice --headless -env:UserInstallation=file:///tmp/lo-exercise-visual-decks \
+              --convert-to pdf --outdir "$outdir" "$deck"
+          done
+          for pdf in exercise-*/docs/Exercise*_Visual_Seminar.pdf; do
+            test -s "$pdf"
+          done
+
+      - name: Upload redesigned seminar deck
+        uses: actions/upload-artifact@v4
+        with:
+          name: lottery-scheduling-seminar-deck
+          path: |
+            exercise-6-research-paper-and-seminar/docs/Lottery_Scheduling_Seminar.pptx
+            exercise-6-research-paper-and-seminar/docs/Lottery_Scheduling_Seminar.pdf
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Validate PDFs and inspect Persian Word conversions
+        run: |
+          set -e
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+
+          pdfs = sorted(Path(".").glob("exercise-*/docs/*.pdf"))
+          if len(pdfs) < 17:
+              raise SystemExit(f"Expected at least 17 PDFs, found {len(pdfs)}")
+          for path in pdfs:
+              reader = PdfReader(str(path))
+              if not reader.pages:
+                  raise SystemExit(f"Empty PDF: {path}")
+              if path.name.endswith("_FA.pdf"):
+                  text = "\n".join(page.extract_text() or "" for page in reader.pages[:5])
+                  has_persian = any(
+                      "\u0600" <= ch <= "\u06ff"
+                      or "\ufb50" <= ch <= "\ufdff"
+                      or "\ufe70" <= ch <= "\ufeff"
+                      for ch in text
+                  )
+                  if not has_persian:
+                      raise SystemExit(f"Persian characters not extractable from {path}")
+          new_report_dirs = [
+              "exercise-5-lottery-scheduling-synchronization-demo",
+              "exercise-6-research-paper-and-seminar",
+              "exercise-7-readers-writers-comparison",
+              "exercise-8-dining-philosophers-deadlock-starvation",
+          ]
+          for directory in new_report_dirs:
+              for path in sorted((Path(directory) / "docs").glob("Exercise*_*.pdf")):
+                  # The separate visual seminar decks are five slides; the
+                  # >40-page contract applies only to the bilingual reports.
+                  if not path.name.endswith(("_EN.pdf", "_FA.pdf")):
+                      continue
+                  page_count = len(PdfReader(str(path)).pages)
+                  if page_count <= 40:
+                      raise SystemExit(f"{path} has {page_count} pages; must be > 40")
+          print(f"Validated {len(pdfs)} PDF files and the >40-page rule for Exercises 5–8")
+          PY
+          mkdir -p /tmp/docx-check /tmp/rtl-renders
+          # Render the PDFs produced directly by the report builder.
+          for pdf in exercise-*/docs/*_FA.pdf; do
+            base=$(basename "$pdf" .pdf)
+            pdftoppm -f 1 -l 4 -png -scale-to 1100 "$pdf" "/tmp/rtl-renders/pdf-$base" >/dev/null 2>&1
+          done
+          # Separately convert Word files with LibreOffice and render those
+          # pages to catch layout differences introduced by DOCX rendering.
+          while IFS= read -r -d '' docx; do
+            libreoffice --headless -env:UserInstallation=file:///tmp/lo-docx-profile \
+              --convert-to pdf --outdir /tmp/docx-check "$docx"
+          done < <(find exercise-5-lottery-scheduling-synchronization-demo/docs exercise-6-research-paper-and-seminar/docs exercise-7-readers-writers-comparison/docs exercise-8-dining-philosophers-deadlock-starvation/docs -type f -name 'Exercise*.docx' -print0)
+          for pdf in /tmp/docx-check/Exercise*.pdf; do
+            test -s "$pdf"
+            pages=$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')
+            if [ "$pages" -le 40 ]; then
+              echo "Word-converted document $(basename "$pdf") has $pages pages; must be > 40"
+              exit 1
+            fi
+            base=$(basename "$pdf" .pdf)
+            if [[ "$base" == *_FA ]]; then
+              pdftoppm -f 1 -l 4 -png -scale-to 1100 "$pdf" "/tmp/rtl-renders/docx-$base" >/dev/null 2>&1
+            fi
+          done
+          test "$(find /tmp/rtl-renders -type f -name '*.png' | wc -l)" -gt 0
+
+      - name: Validate image, chart, and Gantt coverage in all deliverables
+        run: python tools/validate_visual_deliverables.py
+
+      - name: Upload all eight exercise visual slide decks
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-exercise-visual-slide-decks
+          path: exercise-*/docs/Exercise*_Visual_Seminar.*
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload Persian RTL visual QA renders
+        uses: actions/upload-artifact@v4
+        with:
+          name: persian-rtl-qa-renders
+          path: /tmp/rtl-renders/*.png
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Commit generated reports and experiment evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "Build bilingual reports and exercise evidence [skip ci]"
+            # Source reports or workflow settings may have been updated while
+            # the build ran. Rebase the generated artifacts onto the latest tip.
+            git fetch origin "$GITHUB_REF_NAME"
+            git rebase "origin/$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

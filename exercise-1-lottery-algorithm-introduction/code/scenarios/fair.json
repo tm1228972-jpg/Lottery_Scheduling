@@ -1,0 +1,6 @@
+{"quantum": 2, "seed": 7,
+ "processes": [
+  {"pid": "A", "arrival": 0, "burst": 12, "tickets": 10},
+  {"pid": "B", "arrival": 0, "burst": 12, "tickets": 10},
+  {"pid": "C", "arrival": 0, "burst": 12, "tickets": 10},
+  {"pid": "D", "arrival": 0, "burst": 12, "tickets": 10}]}

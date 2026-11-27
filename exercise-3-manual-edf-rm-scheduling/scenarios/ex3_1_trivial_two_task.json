@@ -1,0 +1,9 @@
+{
+  "name": "ex3_1_trivial_two_task",
+  "title": "Ex3-1 — two-task sanity walkthrough",
+  "tasks": [
+    {"pid": "T1", "burst": 2, "period": 5, "deadline": 5},
+    {"pid": "T2", "burst": 1, "period": 7, "deadline": 7}
+  ],
+  "horizon": 35
+}

@@ -1,0 +1,42 @@
+ t | released | pick | remaining after tick | remark
+---+----------+------+-----------------------+------------------------------
+ 0 | T1,T2,T3 | T1   | T1:1 T2:1 T3:3        | +T1,T2,T3 released
+ 1 | ·        | T1   | T1:0 T2:1 T3:3        | T1 done @ t=2, deadline 5 ok
+ 2 | ·        | T2   | T2:0 T3:3             | T2 done @ t=3, deadline 8 ok
+ 3 | ·        | T3   | T3:2                  | run
+ 4 | ·        | T3   | T3:1                  | run
+ 5 | T1       | T1   | T1:1 T3:1             | +T1 released
+ 6 | ·        | T1   | T1:0 T3:1             | T1 done @ t=7, deadline 10 ok
+ 7 | ·        | T3   | T3:0                  | T3 done @ t=8, deadline 10 ok
+ 8 | T2       | T2   | T2:0                  | +T2 released; T2 done @ t=9, deadline 16 ok
+ 9 | ·        | —    | ·                     | idle: nothing ready
+10 | T1,T3    | T1   | T1:1 T3:3             | +T1,T3 released
+11 | ·        | T1   | T1:0 T3:3             | T1 done @ t=12, deadline 15 ok
+12 | ·        | T3   | T3:2                  | run
+13 | ·        | T3   | T3:1                  | run
+14 | ·        | T3   | T3:0                  | T3 done @ t=15, deadline 20 ok
+15 | T1       | T1   | T1:1                  | +T1 released
+16 | T2       | T1   | T1:0 T2:1             | +T2 released; T1 done @ t=17, deadline 20 ok
+17 | ·        | T2   | T2:0                  | T2 done @ t=18, deadline 24 ok
+18 | ·        | —    | ·                     | idle: nothing ready
+19 | ·        | —    | ·                     | idle: nothing ready
+20 | T1,T3    | T1   | T1:1 T3:3             | +T1,T3 released
+21 | ·        | T1   | T1:0 T3:3             | T1 done @ t=22, deadline 25 ok
+22 | ·        | T3   | T3:2                  | run
+23 | ·        | T3   | T3:1                  | run
+24 | T2       | T2   | T2:0 T3:1             | +T2 released; T2 done @ t=25, deadline 32 ok
+25 | T1       | T1   | T1:1 T3:1             | +T1 released
+26 | ·        | T1   | T1:0 T3:1             | T1 done @ t=27, deadline 30 ok
+27 | ·        | T3   | T3:0                  | T3 done @ t=28, deadline 30 ok
+28 | ·        | —    | ·                     | idle: nothing ready
+29 | ·        | —    | ·                     | idle: nothing ready
+30 | T1,T3    | T1   | T1:1 T3:3             | +T1,T3 released
+31 | ·        | T1   | T1:0 T3:3             | T1 done @ t=32, deadline 35 ok
+32 | T2       | T2   | T2:0 T3:3             | +T2 released; T2 done @ t=33, deadline 40 ok
+33 | ·        | T3   | T3:2                  | run
+34 | ·        | T3   | T3:1                  | run
+35 | T1       | T1   | T1:1 T3:1             | +T1 released
+36 | ·        | T1   | T1:0 T3:1             | T1 done @ t=37, deadline 40 ok
+37 | ·        | T3   | T3:0                  | T3 done @ t=38, deadline 40 ok
+38 | ·        | —    | ·                     | idle: nothing ready
+39 | ·        | —    | ·                     | idle: nothing ready

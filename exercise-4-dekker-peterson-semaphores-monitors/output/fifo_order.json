@@ -1,0 +1,10 @@
+{
+  "ticket": {
+    "rounds_checked": 150,
+    "order_violations": 0
+  },
+  "mutex": {
+    "rounds_checked": 150,
+    "order_violations": 0
+  }
+}

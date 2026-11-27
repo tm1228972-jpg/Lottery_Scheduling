@@ -1,0 +1,10 @@
+{
+  "name": "ex3_3_edf_not_rm",
+  "title": "Ex3-3 — EDF-feasible, RM-unschedulable (RTA diverges on T3)",
+  "tasks": [
+    {"pid": "T1", "burst": 1, "period": 4, "deadline": 4},
+    {"pid": "T2", "burst": 2, "period": 5, "deadline": 5},
+    {"pid": "T3", "burst": 2, "period": 7, "deadline": 7}
+  ],
+  "horizon": 140
+}

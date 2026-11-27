@@ -1,0 +1,9 @@
+{
+  "name": "set_c_overloaded",
+  "tasks": [
+    {"pid": "T1", "burst": 2, "period": 5, "tickets": 2},
+    {"pid": "T2", "burst": 2, "period": 6, "tickets": 3},
+    {"pid": "T3", "burst": 2, "period": 7, "tickets": 5}
+  ],
+  "horizon": 84
+}

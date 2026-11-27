@@ -1,0 +1,9 @@
+{
+  "name": "set_a_harmonic",
+  "tasks": [
+    {"pid": "T1", "burst": 1, "period": 4, "tickets": 6},
+    {"pid": "T2", "burst": 2, "period": 5, "tickets": 3},
+    {"pid": "T3", "burst": 1, "period": 10, "tickets": 1}
+  ],
+  "horizon": 60
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ex3_4_constrained_deadlines",
+  "title": "Ex3-4 — constrained deadlines D < T (demand-bound test)",
+  "tasks": [
+    {"pid": "T1", "burst": 2, "period": 7, "deadline": 3},
+    {"pid": "T2", "burst": 2, "period": 9, "deadline": 6}
+  ],
+  "horizon": 63
+}
